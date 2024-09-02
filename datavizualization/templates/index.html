@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <!-- Add this to the <head> section of your HTML files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Data Visualization Dashboard</h1>
+    </header>
+    
+    <form action="/plot" method="get">
+        <label for="month">Select Month:</label>
+        
+        <select id="month" name="month">
+            <option value="All">All</option>
+            {% for month in months %}
+                <option value="{{ month }}">{{ month }}</option>
+            {% endfor %}
+        </select>
+        
+        <form action="/plot" method="get">
+            <input type="submit" value="Show Data">
+        </form>
+    </form>
+
+    <main>
+        <div class="chart-container">
+            <h2>Sales</h2>
+            <img src="images/sales.png" height="150px" width="150px" alt="Sales Plot">
+        </div>
+        <div class="chart-container">
+            <h2>Expenses</h2>
+            <img src="/expenses.png"  alt="Expenses Plot">
+        </div>
+        <div class="chart-container">
+            <h2>Profit</h2>
+            <img src="/profit.png" alt="Profit Plot">
+        </div>
+    </main>
+</body>
+</html>

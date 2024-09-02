@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>Data Visualization Dashboard</h1>
+    </header>
+    <form action="/" method="get">
+        <input type="submit" value="back to Home">
+    </form>
+    <main>
+        <div class="chart-container">
+            <h2>Sales</h2>
+            <img src="data:image/png;base64,{{ sales_plot }}" alt="Sales Plot">
+        </div>
+        <div class="chart-container">
+            <h2>Expenses</h2>
+            <img src="data:image/png;base64,{{ expenses_plot }}" alt="Expenses Plot">
+        </div>
+        <div class="chart-container">
+            <h2>Profit</h2>
+            <img src="data:image/png;base64,{{ profit_plot }}" alt="Profit Plot">
+        </div>
+        <form action="/export" method="get">
+            <input type="submit" value="Export Data">
+        </form>
+    </main>
+</body>
+</html>
